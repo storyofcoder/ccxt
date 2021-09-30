@@ -312,8 +312,8 @@ module.exports = class lcx extends Exchange {
         // status:'success'
         //
         let orderbook = this.safeValue(response, 'data', {});
-        if (orderbook.sell) orderbook.sell = orderbook.sell.filter(a => { if (a[1]) return a; });
-        if (orderbook.buy) orderbook.buy = orderbook.buy.filter(a => { if (a[1]) return a; });
+        if (orderbook.sell) orderbook.sell = orderbook.sell.filter(a => { if (a && a[1]) return a; });
+        if (orderbook.buy) orderbook.buy = orderbook.buy.filter(a => { if (a && a[1]) return a; });
         return {
             'bids': this.safeValue(orderbook, 'buy', []),
             'asks': this.safeValue(orderbook, 'sell', []),
