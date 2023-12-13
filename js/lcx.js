@@ -939,7 +939,7 @@ module.exports = class lcx extends Exchange {
             const now = this.nonce();
             this.checkRequiredCredentials();
             let payload;
-            if (method == 'GET') payload = method + "/" + path;
+            if (method == 'GET') payload = method + "/" + path + this.json(query);
             else payload = method + "/" + path + this.json(query);
 
             let signature = this.hmac(payload, this.secret, 'sha256', 'base64');
